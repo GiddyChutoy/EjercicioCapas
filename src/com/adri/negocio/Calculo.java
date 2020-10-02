@@ -15,9 +15,14 @@ public class Calculo {
 	
 	public int calculoCoches(String nombre) throws IOException {
 		Datos datos = new Datos();
+		int contador = 0;
 		
-		int numeroCoches = datos.consultaLista(nombre);
+		for (String propietario : datos.consultaLista()) {
+			if(propietario.equalsIgnoreCase(nombre)) {
+				contador++;
+			}
+		}
 		
-		return numeroCoches;
+		return contador;
 	}
 }

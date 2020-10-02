@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Giddy
@@ -14,17 +16,19 @@ import java.io.IOException;
  */
 public class Datos {
 	
-	public int consultaLista(String nombre) throws IOException {
+	public List<String> consultaLista() throws IOException {
+		
+		List<String> listaNombres = new ArrayList<>();
 		
 		File fichero = new File("C:/Users/Giddy/Documents/Coches.txt");
 		BufferedReader br = new BufferedReader(new FileReader(fichero));
 		String linea;
-		int numero = 0;
+		
 		while((linea = br.readLine()) != null) {
-			if(linea.contains(nombre)) {
-				numero++;
-			}
+			String[] array = linea.split("-");
+			listaNombres.add(array[0]);
 		}
-		return numero;
-	}	
+		return listaNombres;
+	}
+	
 }
